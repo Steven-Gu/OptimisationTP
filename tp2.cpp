@@ -8,8 +8,9 @@ struct Vertex {
     int begin;
     int end;
     int k; 
+    string name;
 
-    Vertex(int b, int e) : begin(b), end(e), k(0) {}
+    Vertex(int b, int e, string s) : begin(b), end(e), name(s), k(0) {}
 };
 
 struct Graph {
@@ -51,13 +52,13 @@ int main() {
     Graph g;
 
     
-    g.addVertex(Vertex(1, 3));
-    g.addVertex(Vertex(2, 5));
-    g.addVertex(Vertex(2, 8));
-    g.addVertex(Vertex(4, 6));
-    g.addVertex(Vertex(6, 11));
-    g.addVertex(Vertex(9, 11));
-    g.addVertex(Vertex(10, 12));
+    g.addVertex(Vertex(1, 3,"a"));
+    g.addVertex(Vertex(2, 5,"b"));
+    g.addVertex(Vertex(2, 8,"c"));
+    g.addVertex(Vertex(4, 6,"d"));
+    g.addVertex(Vertex(6, 11,"e"));
+    g.addVertex(Vertex(9, 11,"f"));
+    g.addVertex(Vertex(10, 12,"g"));
 
    
     g.colorVertices();
@@ -65,7 +66,7 @@ int main() {
     
     cout << "Vertex colors:" << endl;
     for (const auto& vertex : g.S) {
-        cout << "Vertex [" << vertex.begin << ", " << vertex.end << "] has color " << vertex.k << endl;
+        cout << "Vertex [" << vertex.begin << ", " << vertex.end << "]"<<" "<< vertex.name<<" has color " << vertex.k << endl;
     }
 
     return 0;

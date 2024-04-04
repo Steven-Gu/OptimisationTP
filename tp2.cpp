@@ -19,7 +19,6 @@ struct Graph {
     vector<Vertex> S;  
     vector< pair<int,int> > A;  
 
-    // Fonction pour ajouter un sommet au graphe
     void addVertex(Vertex vertex) {
         S.push_back(vertex);
     }
@@ -63,18 +62,29 @@ int main() {
     g.addVertex(Vertex(1)); 
     g.addVertex(Vertex(2)); 
     g.addVertex(Vertex(3)); 
-    g.addVertex(Vertex(4)); 
+    g.addVertex(Vertex(4));
+    g.addVertex(Vertex(5));
+    g.addVertex(Vertex(6));
+    g.addVertex(Vertex(7)); 
+
 
     // Ajout d'arêtes au graphe
     g.addEdge(1, 2);
     g.addEdge(1, 3);
     g.addEdge(2, 3);
     g.addEdge(3, 4);
+    g.addEdge(2, 4);
+    g.addEdge(3, 5);
+    g.addEdge(5, 6);
+    g.addEdge(5, 7);
+    g.addEdge(6, 7);
 
-    // Affichage des arêtes du graphe
-    cout << "Arêtes du graphe:" << endl;
-    for (const auto& edge : g.A) {
-        cout << "(" << edge.first << ", " << edge.second << ")" << endl;
+    g.colorVertices();
+
+    // Affichage des couleurs des sommets
+    cout << "Couleurs des sommets:" << endl;
+    for (const auto& vertex : g.S) {
+        cout << "Sommet " << vertex.id << " a la couleur " << vertex.k << endl;
     }
 
     return 0;

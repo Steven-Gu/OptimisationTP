@@ -143,6 +143,25 @@ struct Graph_with_weight {
     // If we have checked all pairs and found them connected, the path is valid
         return true;
    }
+        select_two_random_indices(const std::vector<int>& vec) {
+            if (vec.size() < 2) {
+                throw std::invalid_argument("Vector must have at least two elements.");
+            }
+
+        random_device rd;     // Obtain a random number from hardware
+        mt19937 eng(rd());    // Seed the generator
+        uniform_int_distribution<> distr(0, vec.size() - 1); // Define the range
+
+        int firstIndex = distr(eng);
+        int secondIndex = distr(eng);
+    
+    // Ensure that both indices are not the same
+        while (secondIndex == firstIndex) {
+            secondIndex = distr(eng);
+        }
+
+        return {firstIndex, secondIndex};
+    }
 };
 
 int main(){

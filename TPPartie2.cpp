@@ -118,6 +118,31 @@ struct Graph_with_weight {
         }
         return total_distance;
     }
+
+    bool isValidPath(vector<int> path) {
+    // Check if each node in the path is connected to the next
+        for (int i = 0; i < path.size() - 1; ++i) {
+            int u = path[i];
+            int v = path[i + 1];
+            bool nodeConnected = false;
+
+        // Look for an edge between node u and node v
+            for (const auto& edge : adj[u]) {
+                if (edge.first == v) {
+                    nodeConnected = true;
+                    break;
+                }
+            }
+
+        // If no edge is found, the path is invalid
+            if (!nodeConnected) {
+                return false;
+            }
+        }
+
+    // If we have checked all pairs and found them connected, the path is valid
+        return true;
+   }
 };
 
 int main(){
